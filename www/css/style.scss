@@ -1,0 +1,41 @@
+header, main, footer {
+  padding-left: 300px;
+}
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+
+.logo {
+  padding: 0.54rem;
+}
+.sidenav li>a {
+  color: whitesmoke;
+}
+
+body {
+  background-color: #eafaf9;
+
+}
+
+.content {
+  margin: 1rem;
+}
+
+#brands td, #brands th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#brands th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: dodgerblue;
+  color: white;
+}
+
+.p4 {
+  padding: 1rem !important;
+}
