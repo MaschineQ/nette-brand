@@ -29,4 +29,13 @@ body {
 .p4 {
   padding: 1rem !important; }
 
+.flash-message {
+  margin: 0; }
+
+.flash-message-body {
+  height: 50px;
+  border-radius: 0;
+  padding-top: 6px !important;
+  margin: 0; }
+
 /*# sourceMappingURL=style.css.map */

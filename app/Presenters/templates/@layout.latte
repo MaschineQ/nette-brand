@@ -32,8 +32,8 @@
 <main>
 	{ifset breadcrumbs}{include breadcrumbs}{/ifset}
 	{snippet flashes}
-		<div n:foreach="$flashes as $flash" class="row alert alert-{$flash->type} col s12" role="alert" style="margin: 0">
-			<div class="chip col s12 green white-text" style="height: 50px; border-radius: 0; padding-top: 5px; margin: 0">
+		<div n:foreach="$flashes as $flash" class="row alert alert-{$flash->type} col s12 flash-message" role="alert">
+			<div class="chip col s12 green white-text flash-message-body">
 				{$flash->message}
 				<i class="close material-icons">close</i>
 			</div>
