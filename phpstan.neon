@@ -5,4 +5,8 @@ parameters:
     paths:
         - app
 
+    ignoreErrors:
+            - '#Call to an undefined method Nette\\ComponentModel\\IComponent::setDefaults\(\)\.#'
+            - '#Access to an undefined property Nette\\Application\\UI\\Template\|stdClass::\$[a-zA-Z].#'
 
+    checkGenericClassInNonGenericObjectType: false

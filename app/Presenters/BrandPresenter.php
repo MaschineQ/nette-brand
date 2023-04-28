@@ -25,7 +25,7 @@ final class BrandPresenter extends Presenter
 	protected function createComponentBrandForm(): Form
 	{
 		$form = $this->brandFormFactory->create($this->brandId);
-		$form->onSuccess[] = function (Form $form) {
+		$form->onSuccess[] = function () {
 			$this->flashMessage('Značka byla uložena.', 'success');
 			$this->redirect('default');
 		};
@@ -33,8 +33,7 @@ final class BrandPresenter extends Presenter
 		return $form;
 	}
 
-
-	public function renderDefault(int $page = 1, $itemsPerPage = 5): void
+	public function renderDefault(int $page = 1, int $itemsPerPage = 5): void
 	{
 		$lastPage = 0;
 		$this->template->brands = $this->brandRepository->getBrands()->page($page, $itemsPerPage, $lastPage);
@@ -60,9 +59,9 @@ final class BrandPresenter extends Presenter
 
 		if (!$brand) {
 			$this->error('Značka nebyla nalezena.');
-		}
-
-		$this['brandForm']->setDefaults($brand->toArray());
+		} else {
+            $this['brandForm']->setDefaults($brand->toArray());
+        }
 	}
 
 

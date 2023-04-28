@@ -21,7 +21,7 @@ class ImportBrandsPresenter extends Presenter
 	}
 
 
-	public function actionImport()
+	public function actionImport(): void
 	{
 		$this->importBrandsRepository->importBrands();
 		$this->flashMessage('Značky byly importovány.', 'success');

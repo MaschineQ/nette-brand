@@ -29,7 +29,7 @@ class BrandFormFactory
 		$form->addText('name', 'Name');
 		$form->addSubmit('save', 'Uložit');
 
-		$form->onSuccess[] = [$this, 'brandFormSucceeded'];
+		$form->onSuccess[] = [$this, 'brandFormSucceeded']; /** @phpstan-ignore-line */
 
 		return $form;
 	}
