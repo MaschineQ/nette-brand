@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use Nette\Database\Explorer;
 use Nette\Database\Table\ActiveRow;
+use Nette\Database\Table\Selection;
 use Nette\Utils\ArrayHash;
 
 class BrandRepository
@@ -22,10 +23,10 @@ class BrandRepository
             ->fetch();
     }
 
-    public function getBrands(): array
+    public function getBrands(): Selection
     {
         return $this->database->table(self::TABLE_NAME)
-            ->fetchAll();
+            ->order('name ASC');
     }
 
     public function addBrand(ArrayHash $values): void

@@ -3,7 +3,10 @@
 {block modal}
     {snippet brandForm}
         <div class="row">
-            <form n:name=brandForm class="col s12">
+            <form n:name=brandForm class="col s12 ajax">
+                <ul class="errors red-text" n:if="$form->hasErrors()">
+                    <li n:foreach="$form->errors as $error">{$error}</li>
+                </ul>
                 <div class="row">
                     <div class="input-field col s12">
                         <input n:name=name>

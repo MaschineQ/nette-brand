@@ -10,3 +10,4 @@ services:
 	- App\Router\RouterFactory::createRouter
 	- App\Form\BrandFormFactory
 	- App\Repository\BrandRepository
+	- App\Repository\ImportBrandsRepository

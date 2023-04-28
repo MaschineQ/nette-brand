@@ -19,8 +19,8 @@
 					<ul id="slide-out" class="sidenav sidenav-fixed blue darken-2 white-text">
 						<li><div class="blue darken-2 logo">DMQ</div></li>
 						<li><div class="col s12">Menu</div></li>
-						<li><a class="waves-effect" href="#!">Značky</a></li>
-						<li><a class="waves-effect" href="#!">link 2</a></li>
+						<li><a class="waves-effect" n:href="Brand:default">Značky</a></li>
+						<li><a class="waves-effect" n:href="ImportBrands:default">Import</a></li>
 					</ul>
 					<a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 				</div>
@@ -76,8 +76,12 @@
 	naja.addEventListener('success', event => {
 		if (event.detail.payload.showModal === false) {
 			$('.modal').modal('hide');
-			naja.makeRequest('GET', {link refresh!})
 		}
+
+	});
+
+	$('select').on('change', function(){
+		naja.makeRequest('GET', {plink default}, { itemsPerPage: parseInt(this.value) });
 	});
 </script>
 

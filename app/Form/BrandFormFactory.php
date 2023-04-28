@@ -6,7 +6,9 @@ namespace App\Form;
 
 use App\Repository\BrandRepository;
 use Nette\Application\UI\Form;
+use Nette\Database\UniqueConstraintViolationException;
 use Nette\Utils\ArrayHash;
+use Nette;
 
 class BrandFormFactory
 {
@@ -14,16 +16,15 @@ class BrandFormFactory
 
     public function __construct(
         private BrandRepository $brandRepository,
-    ) {
-    }
+    )
+    {}
 
     public function create(?int $brandId): Form
     {
         $this->brandId = $brandId;
         $form = new Form();
 
-        $form->addText('name', 'Name')
-            ->setRequired();
+        $form->addText('name', 'Name');
         $form->addSubmit('save', 'Uložit');
 
         $form->onSuccess[] = [$this, 'brandFormSucceeded'];
@@ -36,9 +37,18 @@ class BrandFormFactory
         $brandId = $this->brandId;
 
         if ($brandId) {
-            $this->brandRepository->updateBrand($brandId, $values);
+            try {
+                $this->brandRepository->updateBrand($brandId, $values);
+            } catch (UniqueConstraintViolationException $e) {
+                $form->addError('Značka s tímto názvem již existuje.');
+            }
         } else {
-            $this->brandRepository->addBrand($values);
+            try {
+                $this->brandRepository->addBrand($values);
+            } catch (UniqueConstraintViolationException $e) {
+                $form->addError('Značka s tímto názvem již existuje.');
+            }
         }
     }
+
 }

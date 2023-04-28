@@ -13,6 +13,7 @@ use Nette\Application\UI\Presenter;
 final class BrandPresenter extends Presenter
 {
     private ?int $brandId = null;
+
     public function __construct(
         private BrandFormFactory $brandFormFactory,
         private BrandRepository $brandRepository,
@@ -31,17 +32,15 @@ final class BrandPresenter extends Presenter
         return $form;
     }
 
-    public function renderDefault(): void
+    public function renderDefault(int $page = 1, $itemsPerPage = 5): void
     {
-        $this->template->brands = $this->brandRepository->getBrands();
-    }
+        $lastPage = 0;
+        $this->template->brands = $this->brandRepository->getBrands()->page($page, $itemsPerPage, $lastPage);
+        $this->template->page = $page;
+        $this->template->lastPage = $lastPage;
+        $this->template->itemsPerPage = $itemsPerPage;
+        $this->redrawControl();
 
-    public function validateBrandForm(Form $form, Nette\Utils\ArrayHash $values): void
-    {
-        if ($values->name === '') {
-            $form->addError('test');
-            $this->redrawControl('testForm');
-        }
     }
 
     public function handleRefresh(): void

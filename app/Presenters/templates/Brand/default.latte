@@ -5,13 +5,24 @@
         </div>
     </div>
 {/block}
+
 {block content}
 <div class="row">
     <div class="col s12">
         <div class="col s12 content white p4">
-            <div class="col p4">
+            <div class="col s11 p4">
                 <a n:href="Brand:add" data-target="myModal" data-modal="true" class="btn btn-outline-info ajax"><i class="material-icons left">add</i>přidat značku</a>
             </div>
+            <div class="col s1 p4">
+                <select class="browser-default" id="itemsPerPage">
+                    <option value="" disabled selected>Položky na stránku</option>
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="50">50</option>
+                </select>
+            </div>
+            {snippet brands}
             <table id="brands" class="highlight p4">
                 <thead>
                 <tr>
@@ -32,17 +43,29 @@
                 {/foreach}
                 </tbody>
             </table>
+            {/snippet}
 
-            <ul class="pagination center">
-                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                <li class="active"><a href="#!">1</a></li>
-                <li class="waves-effect"><a href="#!">2</a></li>
-                <li class="waves-effect"><a href="#!">3</a></li>
-                <li class="waves-effect"><a href="#!">4</a></li>
-                <li class="waves-effect"><a href="#!">5</a></li>
-                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-            </ul>
+            {snippet pages}
+                {dump $lastPage}
+            <div class="pagination center">
+                <br>
+                {if $page > 1}
+                    <a n:href="default, 1" class="ajax page">První</a>
+                    &nbsp;|&nbsp;
+                    <a n:href="default, $page - 1, $itemsPerPage">Předchozí</a>
+                    &nbsp;|&nbsp;
+                {/if}
 
+                    Stránka {$page} z {$lastPage}
+
+	            {if $page < $lastPage}
+                    &nbsp;|&nbsp;
+                    <a n:href="default, $page + 1, $itemsPerPage">Další</a>
+                    &nbsp;|&nbsp;
+                    <a n:href="default, $lastPage, $itemsPerPage">Poslední</a>
+                {/if}
+            </div>
+            {/snippet}
         </div>
     </div>
 </div>
