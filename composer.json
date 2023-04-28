@@ -23,7 +23,8 @@
 	},
 	"require-dev": {
 		"nette/tester": "^2.4",
-		"symfony/thanks": "^1"
+		"symfony/thanks": "^1",
+		"phpstan/phpstan-nette": "^1.2"
 	},
 	"autoload": {
 		"psr-4": {
@@ -38,6 +39,7 @@
 		}
 	},
 	"scripts": {
+		"phpstan": "vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=-1",
 		"cs": "vendor/nette/coding-standard/ecs check app --preset php81",
 		"cs-fix": "vendor/nette/coding-standard/ecs fix app --preset php81"
 	}
