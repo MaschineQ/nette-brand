@@ -39,6 +39,6 @@
 	},
 	"scripts": {
 		"cs": "vendor/nette/coding-standard/ecs check app --preset php81",
-		"cs-fix": "vendor/nette/coding-standard/ecs fix app"
+		"cs-fix": "vendor/nette/coding-standard/ecs fix app --preset php81"
 	}
 }

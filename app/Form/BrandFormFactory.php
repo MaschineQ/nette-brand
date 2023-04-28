@@ -11,42 +11,45 @@ use Nette\Utils\ArrayHash;
 
 class BrandFormFactory
 {
-    private ?int $brandId = null;
+	private ?int $brandId = null;
 
-    public function __construct(
-        private BrandRepository $brandRepository,
-    )
-    {}
 
-    public function create(?int $brandId): Form
-    {
-        $this->brandId = $brandId;
-        $form = new Form();
+	public function __construct(
+		private BrandRepository $brandRepository,
+	) {
+	}
 
-        $form->addText('name', 'Name');
-        $form->addSubmit('save', 'Uložit');
 
-        $form->onSuccess[] = [$this, 'brandFormSucceeded'];
+	public function create(?int $brandId): Form
+	{
+		$this->brandId = $brandId;
+		$form = new Form();
 
-        return $form;
-    }
+		$form->addText('name', 'Name');
+		$form->addSubmit('save', 'Uložit');
 
-    public function brandFormSucceeded(Form $form, ArrayHash $values): void
-    {
-        $brandId = $this->brandId;
+		$form->onSuccess[] = [$this, 'brandFormSucceeded'];
 
-        if ($brandId) {
-            try {
-                $this->brandRepository->updateBrand($brandId, $values);
-            } catch (UniqueConstraintViolationException $e) {
-                $form->addError('Značka s tímto názvem již existuje.');
-            }
-        } else {
-            try {
-                $this->brandRepository->addBrand($values);
-            } catch (UniqueConstraintViolationException $e) {
-                $form->addError('Značka s tímto názvem již existuje.');
-            }
-        }
-    }
+		return $form;
+	}
+
+
+	public function brandFormSucceeded(Form $form, ArrayHash $values): void
+	{
+		$brandId = $this->brandId;
+
+		if ($brandId) {
+			try {
+				$this->brandRepository->updateBrand($brandId, $values);
+			} catch (UniqueConstraintViolationException $e) {
+				$form->addError('Značka s tímto názvem již existuje.');
+			}
+		} else {
+			try {
+				$this->brandRepository->addBrand($values);
+			} catch (UniqueConstraintViolationException $e) {
+				$form->addError('Značka s tímto názvem již existuje.');
+			}
+		}
+	}
 }
