@@ -12,6 +12,7 @@ class ImportBrandsPresenter extends Presenter
 	public function __construct(
 		private ImportBrandsRepository $importBrandsRepository,
 	) {
+		parent::__construct();
 	}
 
 
