@@ -8,7 +8,6 @@ use App\Repository\BrandRepository;
 use Nette\Application\UI\Form;
 use Nette\Database\UniqueConstraintViolationException;
 use Nette\Utils\ArrayHash;
-use Nette;
 
 class BrandFormFactory
 {
@@ -50,5 +49,4 @@ class BrandFormFactory
             }
         }
     }
-
 }

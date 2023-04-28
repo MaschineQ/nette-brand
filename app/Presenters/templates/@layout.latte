@@ -60,12 +60,12 @@
 	{/if}
 {/snippet}
 
-<!--JavaScript at end of body for optimized loading-->
+<!--JavaScript-->
 <script src="{$basePath}/js/jquery.min.js"></script>
 <script type="text/javascript" src="{$basePath}/js/materialize.min.js"></script>
 <script type="text/javascript" src="{$basePath}/js/main.js"></script>
-<script src="https://unpkg.com/naja@2/dist/Naja.min.js"></script>
-<script src="{$basePath}/js/modal.ext.js"></script>
+<script type="text/javascript" src="{$basePath}/js/Naja.min.js"></script>
+<script type="text/javascript" src="{$basePath}/js/modal.ext.js"></script>
 <script type="module">
 	naja.registerExtension(new ModalExtension());
 	document.addEventListener('DOMContentLoaded', () => naja.initialize({
@@ -77,13 +77,11 @@
 		if (event.detail.payload.showModal === false) {
 			$('.modal').modal('hide');
 		}
-
 	});
 
 	$('select').on('change', function(){
 		naja.makeRequest('GET', {plink default}, { itemsPerPage: parseInt(this.value) });
 	});
 </script>
-
 </body>
 </html>

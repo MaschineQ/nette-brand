@@ -9,7 +9,6 @@ use App\Repository\BrandRepository;
 use Nette\Application\UI\Form;
 use Nette\Application\UI\Presenter;
 
-
 final class BrandPresenter extends Presenter
 {
     private ?int $brandId = null;
@@ -40,12 +39,6 @@ final class BrandPresenter extends Presenter
         $this->template->lastPage = $lastPage;
         $this->template->itemsPerPage = $itemsPerPage;
         $this->redrawControl();
-
-    }
-
-    public function handleRefresh(): void
-    {
-        // refresh data
     }
 
     public function actionAdd(): void

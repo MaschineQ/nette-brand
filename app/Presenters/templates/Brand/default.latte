@@ -10,10 +10,10 @@
 <div class="row">
     <div class="col s12">
         <div class="col s12 content white p4">
-            <div class="col s11 p4">
+            <div class="col s12 l11 p4">
                 <a n:href="Brand:add" data-target="myModal" data-modal="true" class="btn btn-outline-info ajax"><i class="material-icons left">add</i>přidat značku</a>
             </div>
-            <div class="col s1 p4">
+            <div class="col s7 l1 p4">
                 <select class="browser-default" id="itemsPerPage">
                     <option value="" disabled selected>Položky na stránku</option>
                     <option value="5">5</option>
@@ -46,7 +46,6 @@
             {/snippet}
 
             {snippet pages}
-                {dump $lastPage}
             <div class="pagination center">
                 <br>
                 {if $page > 1}
@@ -69,4 +68,3 @@
         </div>
     </div>
 </div>
-
