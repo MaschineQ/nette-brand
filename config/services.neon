@@ -8,6 +8,7 @@ search:
 
 services:
 	- App\Router\RouterFactory::createRouter
+	- App\Form\FormFactory
 	- App\Form\BrandFormFactory
 	- App\Repository\BrandRepository
 	- App\Repository\ImportBrandsRepository

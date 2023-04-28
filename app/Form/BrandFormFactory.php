@@ -16,6 +16,7 @@ class BrandFormFactory
 
 	public function __construct(
 		private BrandRepository $brandRepository,
+		private FormFactory $formFactory,
 	) {
 	}
 
@@ -23,7 +24,7 @@ class BrandFormFactory
 	public function create(?int $brandId): Form
 	{
 		$this->brandId = $brandId;
-		$form = new Form();
+		$form = $this->formFactory->create();
 
 		$form->addText('name', 'Name');
 		$form->addSubmit('save', 'Uložit');
