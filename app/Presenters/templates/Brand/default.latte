@@ -1,14 +1,16 @@
-{block content}
-<div class="row">
-    <div class="col s12 blue">
-        <div class="col">
-            <h5 n:block="title">Značky</h5>
+{block breadcrumbs}
+    <div class="nav-wrapper">
+        <div class="col s12 blue p4">
+            <span n:block="title" class="breadcrumb">Značky</span>
         </div>
     </div>
+{/block}
+{block content}
+<div class="row">
     <div class="col s12">
         <div class="col s12 content white p4">
             <div class="col p4">
-                <a class="waves-effect waves-light btn"><i class="material-icons left">add</i>přidat značku</a>
+                <a n:href="Brand:add" data-target="myModal" data-modal="true" class="btn btn-outline-info ajax"><i class="material-icons left">add</i>přidat značku</a>
             </div>
             <table id="brands" class="highlight p4">
                 <thead>
@@ -22,14 +24,12 @@
                 </thead>
 
                 <tbody>
-                <tr>
-                    <td>Nike</td>
-                    <td class="right-align">Smazat | Editovat</td>
-                </tr>
-                <tr>
-                    <td>Puma</td>
-                    <td class="right-align">Smazat | Editovat</td>
-                </tr>
+                {foreach $brands as $brand}
+                    <tr>
+                        <td>{$brand->name}</td>
+                        <td class="right-align"><a n:href="Brand:edit $brand->id" data-target="myModal" data-modal="true" class="ajax">Editovat</a> | <a n:href="Brand:delete $brand->id">Smazat</a></td>
+                    </tr>
+                {/foreach}
                 </tbody>
             </table>
 
@@ -46,3 +46,4 @@
         </div>
     </div>
 </div>
+
