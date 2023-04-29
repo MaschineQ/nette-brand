@@ -28,10 +28,10 @@ class BrandRepository
 	}
 
 
-	public function getBrands(): Selection
+	public function getBrands(string $order): Selection
 	{
 		return $this->database->table(self::TABLE_NAME)
-			->order('name ASC');
+			->order("name $order");
 	}
 
 

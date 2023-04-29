@@ -27,8 +27,8 @@
                 <thead>
                 <tr>
                     <th>Název
-                        <a href="#" class="waves-effect waves-light white-text"><i class="material-icons tiny">arrow_upward</i></a>
-                        <a href="#" class="waves-effect waves-light white-text"><i class="material-icons tiny">arrow_downward</i></a>
+                        <a n:href="Brand:default 'itemsPerPage' => $itemsPerPage, 'sortDirection' => 'ASC'" class="waves-effect waves-light white-text"><i class="material-icons tiny">arrow_upward</i></a>
+                        <a n:href="Brand:default 'itemsPerPage' => $itemsPerPage, 'sortDirection' => 'DESC'" class="waves-effect waves-light white-text"><i class="material-icons tiny">arrow_downward</i></a>
                     </th>
                     <th class="right-align">Akce</th>
                 </tr>
@@ -51,7 +51,7 @@
                 {if $page > 1}
                     <a n:href="default, 1" class="ajax page">První</a>
                     &nbsp;|&nbsp;
-                    <a n:href="default, $page - 1, $itemsPerPage">Předchozí</a>
+                    <a n:href="default, $page - 1, $itemsPerPage, 'sortDirection' => $sortDirection" class="ajax page">Předchozí</a>
                     &nbsp;|&nbsp;
                 {/if}
 
@@ -59,9 +59,9 @@
 
 	            {if $page < $lastPage}
                     &nbsp;|&nbsp;
-                    <a n:href="default, $page + 1, $itemsPerPage">Další</a>
+                    <a n:href="default, $page + 1, $itemsPerPage, 'sortDirection' => $sortDirection" class="ajax page">Další</a>
                     &nbsp;|&nbsp;
-                    <a n:href="default, $lastPage, $itemsPerPage">Poslední</a>
+                    <a n:href="default, $lastPage, $itemsPerPage, 'sortDirection' => $sortDirection" class="ajax page">Poslední</a>
                 {/if}
             </div>
             {/snippet}

@@ -33,10 +33,12 @@ final class BrandPresenter extends Presenter
 		return $form;
 	}
 
-	public function renderDefault(int $page = 1, int $itemsPerPage = 5): void
+
+	public function renderDefault(int $page = 1, int $itemsPerPage = 5, string $sortDirection = 'ASC'): void
 	{
+		$this->template->sortDirection = $sortDirection;
 		$lastPage = 0;
-		$this->template->brands = $this->brandRepository->getBrands()->page($page, $itemsPerPage, $lastPage);
+		$this->template->brands = $this->brandRepository->getBrands($sortDirection)->page($page, $itemsPerPage, $lastPage);
 		$this->template->page = $page;
 		$this->template->lastPage = $lastPage;
 		$this->template->itemsPerPage = $itemsPerPage;
@@ -60,8 +62,8 @@ final class BrandPresenter extends Presenter
 		if (!$brand) {
 			$this->error('Značka nebyla nalezena.');
 		} else {
-            $this['brandForm']->setDefaults($brand->toArray());
-        }
+			$this['brandForm']->setDefaults($brand->toArray());
+		}
 	}
 
 
