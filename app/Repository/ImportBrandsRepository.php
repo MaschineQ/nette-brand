@@ -10,7 +10,7 @@ class ImportBrandsRepository
 {
 	public const TABLE_NAME = 'brand';
 
-    /** @var string[]  */
+	/** @var string[]  */
 	private array $brands = [
 		'Nike',
 		'Adidas',
@@ -158,14 +158,14 @@ class ImportBrandsRepository
 
 	public function importBrands(): void
 	{
-        foreach ($this->brands as $brand) {
-		$exists = $this->database->table(self::TABLE_NAME)->where('name', $brand)->fetch();
+		foreach ($this->brands as $brand) {
+			$exists = $this->database->table(self::TABLE_NAME)->where('name', $brand)->fetch();
 
-		if (!$exists) {
-			$this->database->table(self::TABLE_NAME)->insert([
-				'name' => $brand,
-			]);
+			if (!$exists) {
+				$this->database->table(self::TABLE_NAME)->insert([
+					'name' => $brand,
+				]);
+			}
 		}
-        }
 	}
 }
