@@ -42,6 +42,6 @@ CS(coding-standard) - `composer cs-fix` - fix
 Adminer
 ----------------
 
-Visit http://localhost:90111 or config port in `docker-compose.override.yml`.  
+Visit http://localhost:9011 or config port in `docker-compose.override.yml`.  
 Server: mysql  
 User / pasword: root / root
