@@ -26,7 +26,8 @@ class BrandFormFactory
 		$this->brandId = $brandId;
 		$form = $this->formFactory->create();
 
-		$form->addText('name', 'Name');
+		$form->addText('name', 'Name')
+			->setRequired('Vyplňte prosím název značky.');
 		$form->addSubmit('save', 'Uložit');
 
 		$form->onSuccess[] = [$this, 'brandFormSucceeded']; /** @phpstan-ignore-line */
