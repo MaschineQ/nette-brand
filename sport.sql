@@ -3,9 +3,11 @@ SET time_zone = '+00:00';
 SET foreign_key_checks = 0;
 SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
-USE `sport`;
-
 SET NAMES utf8mb4;
+
+DROP DATABASE IF EXISTS `sport`;
+CREATE DATABASE `sport` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `sport`;
 
 DROP TABLE IF EXISTS `brand`;
 CREATE TABLE `brand` (
