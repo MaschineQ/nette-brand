@@ -15,7 +15,7 @@ Installation
 ------------
 
 1. Clone this repo with GIT.
-2. Install docker in you don't have it (https://www.docker.com/products/docker-desktop)
+2. Install docker if you don't have it (https://www.docker.com/products/docker-desktop)
 3. Get into folder and run `docker-compose up`. First run can take about 10 mins depending on your machine performance (the program will make libraries installation for the first time).
 4. Visit http://localhost:8009 in your browser or config port in `docker-compose.override.yml`.
 
