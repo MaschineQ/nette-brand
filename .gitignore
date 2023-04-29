@@ -3,3 +3,4 @@
 config/local.neon
 /vendor/
 /.debug
+/www/css/.sass-cache/
